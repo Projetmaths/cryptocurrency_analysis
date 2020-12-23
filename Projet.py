@@ -4,6 +4,27 @@ from requests.exceptions import ConnectionError, Timeout, TooManyRedirects
 import json
 import os
 import webbrowser
+from flask import Flask, render_template, Response, request, redirect, url_for
+app = Flask(__name__)
+
+#==============================================================================
+                                    #FLASK
+
+@app.route('/')
+def index():
+    return render_template('file.html')
+
+@app.route('/SomeFunction')
+def SomeFunction():
+    print('In SomeFunction')
+    return "Nothing"
+
+
+
+if __name__ == '__main__':
+   app.run()
+   
+#==============================================================================
 
 url = 'https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest'
 parameters = {
@@ -17,7 +38,7 @@ headers = {
 }
 
 
-Html_file = open("file.html", "wb")
+Html_file = open("file.html", "w", encoding="utf-8")
 
 session = Session()
 session.headers.update(headers)
@@ -34,46 +55,54 @@ try:
   
   url = "D:/Git-repositories/cryptocurrency_analysis_for_dummies/file.html"
   
-  #Html_file.write('<html>')
-  #Html_file.write('<body>')
+  IndexHeader = """
+      <h1><center><strong>The best tool you need to perform in crypto trading</strong></center></h1>
+      <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"> </script>
+      <script type=text/javascript> $(function() { $("#button").click(function (event) { $.getJSON('/SomeFunction', { }, function(data) { }); return false; }); }); </script>
+      <center><button name="button">Refresh page</button></center><br>
+  """
+  Html_file.write(IndexHeader)
+  
   for i in range(0,30):
-      print("Crypto currency n°",i+1,"from CMC analysis :", donnees[i]['name'])
-      print("Currency's price :", donnees[i]['quote']['EUR']['price'], 'euros.') 
-      print('Percent change last 24hours :', str(donnees[i]['quote']['EUR']['percent_change_24h'])+'%.')
-      print('Percent change last hour :', str(donnees[i]['quote']['EUR']['percent_change_1h'])+'%.')
-      print('\n')
-      
-     # message = """
-      
-     # """
-      
-      """Html_file.write('<p>')
-      Html_file.write("Crypto currency n°")
-      Html_file.write(str(i+1))
-      Html_file.write("from CMC analysis :")
-      Html_file.write(str(donnees[i]['name']))
-      
-      Html_file.write("Currency's price :")
-      Html_file.write(str(donnees[i]['quote']['EUR']['price']))
-      Html_file.write('euros.')
-      
-      Html_file.write('Percent change last 24hours :')
-      Html_file.write(str(donnees[i]['quote']['EUR']['percent_change_24h'])+'%.')
-      
-      Html_file.write('Percent change last hour :')
-      Html_file.write(str(donnees[i]['quote']['EUR']['percent_change_1h'])+'%.')
-      
-      Html_file.write('\n')
-      Html_file.write('</p>')"""
       
       
-  #Html_file.write('</body>')
-  #Html_file.write('</html>')
-  #webbrowser.open(url,new=new)
+      #print("Crypto currency n°",i+1,"from CMC analysis :", donnees[i]['name'])
+      #print("Currency's price :", donnees[i]['quote']['EUR']['price'], 'euros.') 
+      #print('Percent change last 24hours :', str(donnees[i]['quote']['EUR']['percent_change_24h'])+'%.')
+      #print('Percent change last hour :', str(donnees[i]['quote']['EUR']['percent_change_1h'])+'%.')
+      #print('\n')
+      
+      importhtml = []
+      
+      importhtml.append(str("Crypto currency n° "+str(i+1)+" from CMC analysis : "+donnees[i]['name'])+'<br>')
+      importhtml.append(str("Currency's price : "+str(donnees[i]['quote']['EUR']['price'])+'euros.')+'<br>') 
+      importhtml.append(str('Percent change last 24hours : '+str(donnees[i]['quote']['EUR']['percent_change_24h'])+'%.')+'<br>')
+      importhtml.append(str('Percent change last hour : '+str(donnees[i]['quote']['EUR']['percent_change_1h'])+'%.')+'<br>')
+      importhtml.append(str('<br>'))
+      
+      HTML = """<!DOCTYPE html>
+ 
+            <html>
+ 
+                <head>
+ 
+                    <meta charset="utf-8" />
+ 
+                    <title>Python Project Crypto-Currencies</title>
+ 
+                </head>
+ 
+                <body>
+                    {a}{b}{c}{d}{e}
+                </body>
+ 
+            </html>""".format(a=importhtml[0],b=importhtml[1],c=importhtml[2],d=importhtml[3],e=importhtml[4])
+ 
+      Html_file.write(HTML)
+  webbrowser.open(url,new=new)
   
 except (ConnectionError, Timeout, TooManyRedirects) as e:
   print(e)
   
-
-os.system('pause')
 Html_file.close()
+#os.system('pause')
