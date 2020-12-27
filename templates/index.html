@@ -1,20 +1,23 @@
-<html>
-<head>
-<title>Cryptotrading </title>
+{% extends "base.html" %}
+{% block title %} Cryptotrading {% endblock %}
 
-<link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/index.css') }}">
-<link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+{% block script %}
 <script type=text/javascript> $(function() { $("#button").click(function (event) { $.getJSON('/SomeFunction', { }, function(data) { }); return false; }); }); </script>
 <script src="{{url_for('static', filename='javascript/fonctions.js')}}"></script>
+{% endblock %}
 
+{% block link %}
+<link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/index.css') }}">
+<link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+{% endblock %}
 
+{% block content %}
+<html>
+<head>
 <body>
     <h1><center><strong>The best tool you need to perform in crypto trading</strong></center></h1>
     <center><button name="button">Refresh page</button></center><br>
 </body>
-
-
-
-
 </head>
 </html>
+{% endblock %}

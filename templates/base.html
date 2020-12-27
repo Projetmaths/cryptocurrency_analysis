@@ -1,0 +1,15 @@
+<!doctype html>
+<html>
+<head>
+    {% block script %}
+    {% endblock %}
+    {% block link %}
+    {% endblock %}
+    <title>{% block title %} {% endblock %}</title>
+</head>
+<body>
+    <h1>TEST</h1>
+        {% block content %}
+        {% endblock %}
+</body>
+</html>

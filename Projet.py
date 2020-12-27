@@ -5,10 +5,17 @@ import json
 import os
 import webbrowser
 from flask import Flask, render_template, Response, request, redirect, url_for
+from flask_bootstrap import Bootstrap
 app = Flask(__name__)
 
 #==============================================================================
                                     #FLASK
+
+def create_app():
+  app = Flask(__name__)
+  Bootstrap(app)
+  
+  return app
 
 @app.route('/')
 def index():
