@@ -12,12 +12,15 @@
 {% endblock %}
 
 {% block content %}
-<html>
-<head>
-<body>
-    <h1><center><strong>The best tool you need to perform in crypto trading</strong></center></h1>
-    <center><button name="button">Refresh page</button></center><br>
-</body>
-</head>
-</html>
+	<h1><center><strong>The best tool you need to perform in crypto trading</strong></center></h1>
+	<center><button name="button">Refresh page</button></center><br>
+	{% for i in range (0,incr) %}
+		<span>{{ data[i] }} {{ i }}</span>
+		{% if i < i%4 %}
+			<br>
+			{% if i==5,10 %}
+				<hr>
+			{% endif %}
+		{% endif %}
+	{% endfor %}
 {% endblock %}
