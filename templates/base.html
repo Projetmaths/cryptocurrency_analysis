@@ -1,8 +1,6 @@
 <!doctype html>
 <html>
 <head>
-    {% block script %}
-    {% endblock %}
     {% block link %}
     {% endblock %}
     <title>{% block title %} {% endblock %}</title>
@@ -10,6 +8,8 @@
 <body>
     <h1>TEST</h1>
         {% block content %}
+        {% endblock %}
+        {% block script %}
         {% endblock %}
 </body>
 </html>
