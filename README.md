@@ -7,3 +7,6 @@ Prérequis: Installation de openssl
 ```python
 py -m pip install -r requirements.txt
 ```
+
+SCRAPPING : seaborn | matplotlib / beautiful-soup / Pandas (Bdd)
+Faire architecture (schéma global système des composants fonctionnements et dépendances)
