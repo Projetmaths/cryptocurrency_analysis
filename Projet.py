@@ -25,7 +25,7 @@ session.headers.update(headers)
 new = 2
 try:
     response = session.get(url, params=parameters)
-    data = json.loads(response.text)
+    data = response.json()
     # print(data) #-> print absolument TOUT donc c'est bien pour voir les tuples mais c'est tout c:
     # print("Sentence describing what you want to tell : ", data['data'])
     donnees = data['data']
@@ -65,7 +65,9 @@ def SomeFunction():
 
 
 if __name__ == '__main__':
-    app.run(debug=True, host='192.168.1.11')
+    webbrowser.open("http://localhost:5000")
+    app.run(debug=True)
+    
 
 #Rechangez en 127.0.0.1 ou enlevez simplement la partie host=''
 #Mais comme ça on peut émuler sur réseau local un petit serveur
