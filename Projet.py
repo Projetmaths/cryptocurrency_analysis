@@ -55,6 +55,8 @@ def index():
 	incr=4*(i+1)
 	return render_template('index.html', data=importhtml, incr=incr)
 
+#Je return le incr, mais je ne m'en sers plus dans la partie suivante donc on peut s'en servir pour ce qu'on veut
+#ou l'enlever aussi si jamais il nous sert à rien
 
 @app.route('/SomeFunction')
 def SomeFunction():
@@ -63,9 +65,9 @@ def SomeFunction():
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True, host='192.168.1.11')
+
+#Rechangez en 127.0.0.1 ou enlevez simplement la partie host=''
+#Mais comme ça on peut émuler sur réseau local un petit serveur
 
 # ==============================================================================
-
-
-# os.system('pause')
