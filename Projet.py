@@ -9,6 +9,7 @@ from crontab import CronTab
 import json
 import csv
 import os
+import sys
 import random
 import io
 import webbrowser
@@ -22,12 +23,18 @@ app = Flask(__name__)
 
 # ==============================================================================
 # FLASK
+api_key = os.getenv("API_KEY")
+
+if not api_key:
+    print("API_KEY variable missing ")
+    sys.exit(1)
+    
 lim=15
 
 
 url = 'https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest'
 parameters = {'start': '1', 'limit': lim, 'convert': 'EUR'}
-headers = {'Accepts': 'application/json','X-CMC_PRO_API_KEY': '4aaaa51e-2ac2-48ce-8e75-a49c61efeb33', }
+headers = {'Accepts': 'application/json','X-CMC_PRO_API_KEY': api_key }
 session = Session()
 session.headers.update(headers)
 new = 2
