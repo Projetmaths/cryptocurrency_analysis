@@ -2,10 +2,12 @@
 {% block title %} Cryptotrading {% endblock %}
 
 {% block script %}
-<script src="{{url_for('static', filename='javascript/fonctions.js')}}"></script>
+
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js" integrity="sha384-q2kxQ16AaE6UbzuKqyBE9/u/KzioAlnx2maXQHiDX9d4/zp8Ok3f+M7DPm+Ib6IU" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-pQQkAEnwaBkjpqZ8RU1fF1AKtTcHJwFl3pblpTlHXybJjHpMYo79HY3hIi4NKxyj" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js" integrity="sha512-d9xgZrVZpmmQlfonhQUvTR7lMPtO7NkZMkA0ABN3PHCbKA5nqylQ/yWlFAyY6hYgdF1Qh6nYiuADWwKB4C2WSw==" crossorigin="anonymous"></script>
+<script src="{{url_for('static', filename='javascript/chart.js')}}"></script>
+
 {% endblock %}
 
 {% block link %}
@@ -15,9 +17,11 @@
 {% endblock %}
 
 {% block content %}
-	<h1><center><strong>The best tool you need to perform in crypto trading</strong></center></h1>
-	<center><a href="{{ url_for('index') }}"><button type="button" class="btn btn-primary"></buttontype>Actualiser</button></a></center><br>
-	{% for _ in data %}
-		<p>{% print(_) %}</p>
-	{% endfor %}
+<h1>Simple Line Chart</h1>
+<!-- bar chart canvas element -->
+<canvas id="myChart" width="600" height="400"></canvas>
+<p id="caption">The chart is displaying a simple line chart.</p>
+
+
+
 {% endblock %}

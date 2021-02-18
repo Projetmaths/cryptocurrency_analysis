@@ -5,7 +5,6 @@ from flask import Flask, render_template, Response, request, redirect, url_for,s
 from flask_bootstrap import Bootstrap
 from requests import Request, Session
 from requests.exceptions import ConnectionError, Timeout, TooManyRedirects
-from crontab import CronTab
 import json
 import csv
 import os
@@ -15,7 +14,6 @@ import io
 import webbrowser
 import numpy as np
 import matplotlib.pyplot as plt
-import seaborn as sns
 import pandas as pd
 import time 
 
@@ -68,6 +66,13 @@ def index():
     incr=4*(i+1)
     
     return render_template('index.html', data=importhtml, incr=incr)
+
+
+@app.route('/chart')
+def chart():
+    return render_template('chart.html')
+
+
 
 #Je return le incr, mais je ne m'en sers plus dans la partie suivante donc on peut s'en servir pour ce qu'on veut
 #ou l'enlever aussi si jamais il nous sert à rien
