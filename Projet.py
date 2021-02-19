@@ -69,6 +69,11 @@ def index():
     
     return render_template('index.html', data=importhtml, incr=incr)
 
+
+@app.route('/chart')
+def chart():
+    return render_template('chart.html')
+
 #Je return le incr, mais je ne m'en sers plus dans la partie suivante donc on peut s'en servir pour ce qu'on veut
 #ou l'enlever aussi si jamais il nous sert à rien
 
