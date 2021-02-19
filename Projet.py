@@ -70,7 +70,9 @@ def index():
 
 @app.route('/chart')
 def chart():
-    return render_template('chart.html')
+    labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July']
+    data = [0, 10, 5, 2, 20, 30, 45]
+    return render_template('chart.html', labels = labels, data = data)
 
 #Je return le incr, mais je ne m'en sers plus dans la partie suivante donc on peut s'en servir pour ce qu'on veut
 #ou l'enlever aussi si jamais il nous sert à rien
@@ -81,8 +83,8 @@ def chart():
 #     return "Nothing"
 
 if __name__ == '__main__':
-    webbrowser.open("http://localhost:5000")
-    app.run(debug=True)
+    webbrowser.open("http://192.168.1.89:5000")
+    app.run(debug=True, host='192.168.1.89')
 
 
 #Rechangez en 127.0.0.1 ou enlevez simplement la partie host=''
