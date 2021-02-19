@@ -5,7 +5,6 @@ from flask import Flask, render_template, Response, request, redirect, url_for,s
 from flask_bootstrap import Bootstrap
 from requests import Request, Session
 from requests.exceptions import ConnectionError, Timeout, TooManyRedirects
-from crontab import CronTab
 import json
 import csv
 import os
@@ -15,7 +14,6 @@ import io
 import webbrowser
 import numpy as np
 import matplotlib.pyplot as plt
-import seaborn as sns
 import pandas as pd
 import time 
 
