@@ -80,9 +80,24 @@ def chart():
                 lignes=str(row).split(';')  # on split les éléments avec le caractère `;` définit plus haut dans le code
                 #for ligne in lignes:        # LA C LA MERDE
                                             # Il faut pouvoir récupérer les éléments individuellement, pour les push dans le return
-                    
-            #     labels.append(row[1]) #insérer date pour axe x   
-            #     data.append(row[5]) #insérer prix pour axe y
+                tab = []        
+                for ligne in lignes:  
+                    tab.append(ligne)
+                #print(tab)
+                val1=tab[0]
+                val2=tab[1]
+                val3=tab[2]
+                val4=tab[3]  
+
+                val1=val1.replace("['", "")
+                val3=val3.replace("T", " | ")
+                val3=val3.replace("Z", "")
+                val4=val4.replace("']", "")
+                #print(val3)
+                labels.append(val3) #insérer date pour axe x   
+                data.append(val2) #insérer prix pour axe y
+                #labels = json.dumps(labels)  # C'est sensé permettre 
+                #data = json.dumps(data)
     return render_template('chart.html', labels = labels, data = data) #crypto_name=crypto_name
 
 #Je return le incr, mais je ne m'en sers plus dans la partie suivante donc on peut s'en servir pour ce qu'on veut
