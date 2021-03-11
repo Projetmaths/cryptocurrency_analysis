@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block title %} Cryptotrading {% endblock %}
+
+{% block script %}
+{% endblock %}
+
+{% block link %}
+<link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/index.css') }}">
+<link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+{% endblock %}
+
+{% block content %}
+<div class="content index flex-error">
+    <div class="oops">Oups<br/>la page n'a pas été trouvée...</div>
+	<img src="/static/img/404img.png" alt="error 404">
+</div>
+{% endblock %}
