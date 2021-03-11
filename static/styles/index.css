@@ -1,18 +1,111 @@
-body            { font-family: sans-serif; background: #eee; }
-a, h1, h2       { color: #377ba8; }
-h1, h2          { font-family: 'Georgia', serif; margin: 0; }
-h1              { border-bottom: 2px solid #eee; }
-h2              { font-size: 1.2em; }
+body {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    height: 100%;
+}
 
-.page           { margin: 2em auto; width: 35em; border: 5px solid #ccc;
-                  padding: 0.8em; background: white; }
-.entries        { list-style: none; margin: 0; padding: 0; }
-.entries li     { margin: 0.8em 1.2em; }
-.entries li h2  { margin-left: -1em; }
-.add-entry      { font-size: 0.9em; border-bottom: 1px solid #ccc; }
-.add-entry dl   { font-weight: bold; }
-.metanav        { text-align: right; font-size: 0.8em; padding: 0.3em;
-                  margin-bottom: 1em; background: #fafafa; }
-.flash          { background: #cee5F5; padding: 0.5em;
-                  border: 1px solid #aacbe2; }
-.error          { background: #f0d6d6; padding: 0.5em; }
+a {
+    text-decoration: none;
+    color: #928f8f;
+}
+
+.content {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    box-sizing: border-box;
+}
+
+.index {
+    height: 100vh;
+}
+
+.sidebar {
+    width: 350px;
+    flex-shrink: 0;
+    box-sizing: border-box;
+    background-color: #242424;
+    padding: 30px;
+}
+
+.menu-title {
+    font-size: 100%;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: rgb(255, 166, 0);
+    margin-top: 30px;
+}
+
+.menu-first:first-child {
+    margin-top: -20px;
+}
+
+.menu-subtitle {
+    font-size: 110%;
+    color: #928f8f;
+    margin-top: 10px;
+    padding: 15px;
+}
+
+.menu-subtitle:hover {
+    cursor: pointer;
+    background-color: #5a5a5a;
+    color: white;
+    padding-left: 22px;
+    transition: 1.2s;
+}
+
+.dashboard {
+    height: 100%;
+    width: 100%;
+    padding: 30px;
+    box-sizing: border-box;
+    background-color: white;
+}
+
+.dash-title {
+    font-size: 50px;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.dash-datatable {
+    width: 100%;
+    margin-top: 20px;
+}
+
+.dash-datatable-title {
+    font-size: 120%;
+    background-color: rgb(236, 235, 235);
+    border: 1px solid rgb(182, 178, 178);
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    padding: 20px;
+}
+
+.dash-datatable-container {
+    background-color: white;
+    border: 1px solid rgb(182, 178, 178);
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+.flex-error {
+    display: flex;
+    flex-direction: column;
+}
+
+.oops {
+    margin: 0 auto;
+    text-align: center;
+    font-size: 40px;
+    font-weight: bold;
+    margin-top: 200px;
+}
+
+img {
+    max-width:600px;
+    margin:0 auto;
+    height: 400px;
+}
