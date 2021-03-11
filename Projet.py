@@ -1,41 +1,32 @@
-# much love ♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥
-from matplotlib.figure import Figure
-from matplotlib.backends.backend_agg import FigureCanvasAgg as FigureCanvas
+# Dependencies
 from flask import Flask, render_template, Response, request, redirect, url_for,send_file
-from flask_bootstrap import Bootstrap
 from requests import Request, Session
 from requests.exceptions import ConnectionError, Timeout, TooManyRedirects
 import json
 import csv
 import os
 import sys
-import random
-import io
-import webbrowser
-import numpy as np
-import matplotlib.pyplot as plt
-import pandas as pd
-import time 
 
+# FLASK Application
 app = Flask(__name__)
 
-# ==============================================================================
-# FLASK
+# API KEY
 api_key = os.getenv("API_KEY")
 
 if not api_key:
     print("API_KEY variable missing ")
     sys.exit(1)
     
+
+# Request API 
 lim=15
-
-
 url = 'https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest'
 parameters = {'start': '1', 'limit': lim, 'convert': 'EUR'}
 headers = {'Accepts': 'application/json','X-CMC_PRO_API_KEY': api_key }
 session = Session()
 session.headers.update(headers)
 new = 2
+
 try:
     response = session.get(url, params=parameters)
     data = response.json()
@@ -43,11 +34,6 @@ try:
 except (ConnectionError, Timeout, TooManyRedirects) as e:
     print(e)
 
-def create_app():
-    app = Flask(__name__)
-    Bootstrap(app)
-
-    return app
 
 @app.route('/')
 def index():
@@ -66,11 +52,6 @@ def index():
     incr=4*(i+1)
     
     return render_template('index.html', data=importhtml, incr=incr)
-
-@app.errorhandler(404)
-def page_not_found(e):
-    # note that we set the 404 status explicitly
-    return render_template('404.html'), 404
     
 @app.route('/chart')
 def chart():
@@ -115,15 +96,10 @@ def chart():
     print(count, lim)
     return render_template('chart.html', labels = labels, data = data, lim=lim, count=count, name=name, symbol=symbol) 
 
-#Je return le incr, mais je ne m'en sers plus dans la partie suivante donc on peut s'en servir pour ce qu'on veut
-#ou l'enlever aussi si jamais il nous sert à rien
+@app.errorhandler(404)
+def page_not_found(e):
+    # note that we set the 404 status explicitly
+    return render_template('404.html'), 404
 
 if __name__ == '__main__':
-    #webbrowser.open("http://localhost:5000/chart")
     app.run(debug=True, host='localhost')
-
-
-#Rechangez en 127.0.0.1 ou enlevez simplement la partie host=''
-#Mais comme ça on peut émuler sur réseau local un petit serveur
-
-# ==============================================================================
