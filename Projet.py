@@ -72,18 +72,22 @@ def index():
 def chart():
     labels = []
     data = []
+    name = []
+    symbol = []
     for i in range(0, lim):
         nomcrypto=str("csv/"+donnees[i]['symbol']+".csv")
         with open(nomcrypto, "r") as file:  # on open les fichiers csv ici
             csv_reader=csv.reader(file)     # on lit le contenu du fichier csv ouvert juste avant, définit par la boucle for au début (ligne 75)
+            count=0
             for row in csv_reader:          # on parse chaque ligne du fichier
+                         
                 lignes=str(row).split(';')  # on split les éléments avec le caractère `;` définit plus haut dans le code
                 #for ligne in lignes:        # LA C LA MERDE
                                             # Il faut pouvoir récupérer les éléments individuellement, pour les push dans le return
                 tab = []        
                 for ligne in lignes:  
                     tab.append(ligne)
-                #print(tab)
+                #print(tab[2])
                 val1=tab[0]
                 val2=tab[1]
                 val3=tab[2]
@@ -93,18 +97,25 @@ def chart():
                 val3=val3.replace("T", " | ")
                 val3=val3.replace("Z", "")
                 val4=val4.replace("']", "")
-                #print(val3)
+                #print(val1)
+
+
                 labels.append(val3) #insérer date pour axe x   
                 data.append(val2) #insérer prix pour axe y
+                name.append(val1)
+                symbol.append(val4)
+
+                count+=1
                 #labels = json.dumps(labels)  # C'est sensé permettre 
                 #data = json.dumps(data)
-    return render_template('chart.html', labels = labels, data = data) #crypto_name=crypto_name
+    print(count, lim)
+    return render_template('chart.html', labels = labels, data = data, lim=lim, count=count, name=name, symbol=symbol) 
 
 #Je return le incr, mais je ne m'en sers plus dans la partie suivante donc on peut s'en servir pour ce qu'on veut
 #ou l'enlever aussi si jamais il nous sert à rien
 
 if __name__ == '__main__':
-    webbrowser.open("http://localhost:5000/chart")
+    #webbrowser.open("http://localhost:5000/chart")
     app.run(debug=True, host='localhost')
 
 
