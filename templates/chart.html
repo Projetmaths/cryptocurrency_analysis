@@ -46,7 +46,7 @@
 				<div style="width: 75%">
 					<h2 titre="2">Ethereum</h2>
 					<div graph="2" class="dropdown">
-						<canvas id="myChart3"></canvas>
+						<canvas id="myChart2"></canvas>
 					</div>
 				</div>
 				<br>
@@ -54,7 +54,7 @@
 				<div style="width: 75%">
 					<h2 titre="3">Binance Coin</h2>
 					<div graph="3" class="dropdown">
-						<canvas id="myChart5"></canvas>
+						<canvas id="myChart3"></canvas>
 					</div>
 				</div>
 				<br>
@@ -62,7 +62,7 @@
 				<div style="width: 75%">
 					<h2 titre="4">Tether</h2>
 					<div graph="4" class="dropdown">
-						<canvas id="myChart7"></canvas>
+						<canvas id="myChart4"></canvas>
 					</div>
 				</div>
 				<br>
@@ -70,7 +70,7 @@
 				<div style="width: 75%">
 					<h2 titre="5">Cardano</h2>
 					<div graph="5" class="dropdown">
-						<canvas id="myChart9"></canvas>
+						<canvas id="myChart5"></canvas>
 					</div>
 				</div>
 				<br>
@@ -78,7 +78,7 @@
 				<div style="width: 75%">
 					<h2 titre="6">Polkadot</h2>
 					<div graph="6" class="dropdown">
-						<canvas id="myChart11"></canvas>
+						<canvas id="myChart6"></canvas>
 					</div>
 				</div>
 				<br>
@@ -86,7 +86,7 @@
 				<div style="width: 75%">
 					<h2 titre="7">XRP</h2>
 					<div graph="7" class="dropdown">
-						<canvas id="myChart13"></canvas>
+						<canvas id="myChart7"></canvas>
 					</div>
 				</div>
 				<br>
@@ -94,7 +94,7 @@
 				<div style="width: 75%">
 					<h2 titre="8">Uniswap</h2>
 					<div graph="8" class="dropdown">
-						<canvas id="myChart15"></canvas>
+						<canvas id="myChart8"></canvas>
 					</div>
 				</div>
 				<br>
@@ -102,7 +102,7 @@
 				<div style="width: 75%">
 					<h2 titre="9">Litecoin</h2>
 					<div graph="9" class="dropdown">
-						<canvas id="myChart17"></canvas>
+						<canvas id="myChart9"></canvas>
 					</div>
 				</div>
 				<br>
@@ -110,7 +110,7 @@
 				<div style="width: 75%">
 					<h2 titre="10">Chainlink</h2>
 					<div graph="10" class="dropdown">
-						<canvas id="myChart19"></canvas>
+						<canvas id="myChart10"></canvas>
 					</div>
 				</div>
 				<br>
@@ -118,7 +118,7 @@
 				<div style="width: 75%">
 					<h2 titre="11">Bitcoin Cash</h2>
 					<div graph="11" class="dropdown">
-						<canvas id="myChart21"></canvas>
+						<canvas id="myChart11"></canvas>
 					</div>
 				</div>
 				<br>
@@ -126,7 +126,7 @@
 				<div style="width: 75%">
 					<h2 titre="12">Stellar</h2>
 					<div graph="12" class="dropdown">
-						<canvas id="myChart23"></canvas>
+						<canvas id="myChart12"></canvas>
 					</div>
 				</div>
 				<br>
@@ -134,7 +134,7 @@
 				<div style="width: 75%">
 					<h2 titre="13">USD Coin</h2>
 					<div graph="13" class="dropdown">
-						<canvas id="myChart25"></canvas>
+						<canvas id="myChart13"></canvas>
 					</div>
 				</div>
 				<br>
@@ -142,7 +142,7 @@
 				<div style="width: 75%">
 					<h2 titre="14">Wrapped Bitcoin</h2>
 					<div graph="14" class="dropdown">
-						<canvas id="myChart27"></canvas>
+						<canvas id="myChart14"></canvas>
 					</div>
 				</div>
 				<br>
@@ -150,7 +150,7 @@
 				<div style="width: 75%">
 					<h2 titre="15">Dogecoin</h2>
 					<div graph="15" class="dropdown">
-						<canvas id="myChart29"></canvas>
+						<canvas id="myChart15"></canvas>
 					</div>
 				</div>
 
@@ -189,8 +189,8 @@
 					}
 				
 					console.log(tab);
-					for ( var i = 1 ; i <= (nb_lignes) ; i++) {
-						console.log(tab[i-1]);
+					for ( var i = 1 ; i <= (nb_csv) ; i++) {
+						console.log(i);
 						var ctx = document.getElementById('myChart'+i+'').getContext('2d');
 						var data = {
 								labels: [
