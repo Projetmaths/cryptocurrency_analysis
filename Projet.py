@@ -37,21 +37,14 @@ except (ConnectionError, Timeout, TooManyRedirects) as e:
 
 @app.route('/')
 def index():
-    importhtml = []
-    #os.remove('data.csv')
     for i in range(0, lim):
         nomcrypto=str("csv/"+donnees[i]['symbol']+".csv")
-        with open(nomcrypto, "a") as csv:
-            importhtml.append(str("Crypto currency n° "+str(i+1)+" from CMC analysis : "+donnees[i]['name']))
-            importhtml.append(str("Currency's price : "+str(donnees[i]['quote']['EUR']['price'])+'euros.'))
-            importhtml.append(str('Percent change last 24hours : '+str(donnees[i]['quote']['EUR']['percent_change_24h'])+'%.'))
-            importhtml.append(str('Percent change last hour : '+str(donnees[i]['quote']['EUR']['percent_change_1h'])+'%.'))
+        with open(nomcrypto, "w") as csv:
             row = str(donnees[i]['name'])+';'+str(donnees[i]['quote']['EUR']['price'])+';'+str(donnees[i]['last_updated'])+';'+str(donnees[i]['symbol'])+ '\n'
             csv.write(row)
         csv.close()
-    incr=4*(i+1)
-    
-    return render_template('index.html', data=importhtml, incr=incr)
+        
+    return render_template('index.html')
     
 @app.route('/chart')
 def chart():
