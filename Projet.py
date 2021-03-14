@@ -39,7 +39,7 @@ except (ConnectionError, Timeout, TooManyRedirects) as e:
 def index():
     for i in range(0, lim):
         nomcrypto=str("csv/"+donnees[i]['symbol']+".csv")
-        with open(nomcrypto, "w") as csv:
+        with open(nomcrypto, "a") as csv:
             row = str(donnees[i]['name'])+';'+str(donnees[i]['quote']['EUR']['price'])+';'+str(donnees[i]['last_updated'])+';'+str(donnees[i]['symbol'])+ '\n'
             csv.write(row)
         csv.close()
