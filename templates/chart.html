@@ -43,7 +43,7 @@
 				</div>
 				<br>
 
-				<div style="width: 75%">
+				<!-- <div style="width: 75%">
 					<h2 titre="2">Ethereum</h2>
 					<div graph="2" class="dropdown">
 						<canvas id="myChart2"></canvas>
@@ -152,7 +152,7 @@
 					<div graph="15" class="dropdown">
 						<canvas id="myChart15"></canvas>
 					</div>
-				</div>
+				</div> -->
 
 
 				<script>
@@ -167,45 +167,43 @@
 				
 					console.log("==================================================")
 					console.log("Paramètres")
-					console.log(rows);
-					console.log(nb_csv);
+					// console.log(rows);
+					// console.log(nb_csv);
 					console.log("==================================================")
 				
-					var tab = [];
-					for (var i = 0; i < (nb_lignes); i++) { //nb_csv*rows donnera le nombre total de lignes présentes à travers tous									
+					
+					for (var i = 0; i < (nb_lignes); i++) { //nb_csv*rows donnera le nombre total de lignes présentes à travers tous
+
 						if(i%rows==0){
 							console.log("changement"); //Ici on peut séparer les données avec de l'html jsp mais les données dans
 													   //le console.log sont bien séparées au modulo du nombre de lignes du csv.
 													   //Et vu qu'ils se remplissent à la même vitesse les séparations seront
 													   //toujours bien réparties.
 							//console.log('---'+names[i],prices[i],i+'---');
-							nom_tmp = names[i];
+					
 						}
-						if(nom_tmp==nom_tmp){
-							//tab.push(nom_tmp);
-							tab.push(prices[i]);
-							tab.push(labels[i]);
-						}
+						
 					}
 				
-					console.log(tab);
+					// console.log(tab);
 					for ( var i = 1 ; i <= (nb_csv) ; i++) {
-						console.log(i);
-						var ctx = document.getElementById('myChart'+i+'').getContext('2d');
+						// console.log(i);
+						var ctx = document.getElementById('myChart1').getContext('2d');
 						var data = {
 								labels: [
 										{% for row in rows %}	
-											tab[i],
+											labels[i],
 										{% endfor %}
 								],
 								datasets: [{
 									label: 'Price',
 									data: [
 										  {% for row in rows %}
-											  tab[i-1],
+											  prices[i],
 										  {% endfor %}
 									]
-								}]};
+								}]
+							};
 						var config = {
 							type: 'line',
 							data: data,

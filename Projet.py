@@ -40,25 +40,29 @@ def chart():
         
     for i in range(0, lim):
         nomcrypto=str("csv/"+donnees[i]['symbol']+".csv")
+        os.remove(nomcrypto)
         with open(nomcrypto, "w") as csvfile:
             row = str(donnees[i]['name'])+';'+str(donnees[i]['quote']['EUR']['price'])+';'+str(donnees[i]['last_updated'])+';'+str(donnees[i]['symbol'])+ '\n'
             csvfile.write(row)
         csvfile.close()
         
+    tab = []
+    labels = []
+    data = []
+    name = []
+    symbol = []    
+    
     for i in range(0, lim):
         nomcrypto=str("csv/"+donnees[i]['symbol']+".csv")
+        
         with open(nomcrypto, "r") as file:  # on open les fichiers csv ici
             csv_reader=csv.reader(file)     # on lit le contenu du fichier csv ouvert juste avant, définit par la boucle for au début (ligne 75)
+            print()
             count=0
             for row in csv_reader:          # on parse chaque ligne du fichier
                          
                 lignes=str(row).split(';')  # on split les éléments avec le caractère `;` définit plus haut dans le code
-                
-                tab = []
-                labels = []
-                data = []
-                name = []
-                symbol = []        
+                   
                 for ligne in lignes:  
                     tab.append(ligne)
                     
@@ -86,6 +90,6 @@ def page_not_found(e):
     return render_template('404.html'), 404
 
 if __name__ == '__main__':
-    scheduler.add_job(id = 'Scheduled task', func = chart, trigger = 'interval', seconds = 5 )
+    scheduler.add_job(id = 'Scheduled task', func = chart, trigger = 'interval', seconds = 3600 )
     scheduler.start()
     app.run(debug=True, host='localhost')
