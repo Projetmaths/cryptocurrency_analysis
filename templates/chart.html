@@ -43,7 +43,7 @@
 				</div>
 				<br>
 
-				<!-- <div style="width: 75%">
+				<!--<div style="width: 75%">
 					<h2 titre="2">Ethereum</h2>
 					<div graph="2" class="dropdown">
 						<canvas id="myChart2"></canvas>
@@ -152,7 +152,7 @@
 					<div graph="15" class="dropdown">
 						<canvas id="myChart15"></canvas>
 					</div>
-				</div> -->
+				</div>-->
 
 
 				<script>
@@ -169,6 +169,8 @@
 					console.log("Paramètres")
 					// console.log(rows);
 					// console.log(nb_csv);
+					console.log(labels);
+					console.log(prices);
 					console.log("==================================================")
 				
 					
@@ -191,15 +193,15 @@
 						var ctx = document.getElementById('myChart1').getContext('2d');
 						var data = {
 								labels: [
-										{% for row in rows %}	
-											labels[i],
+										{% for label in labels %}	
+											"{{label}}",
 										{% endfor %}
 								],
 								datasets: [{
 									label: 'Price',
 									data: [
-										  {% for row in rows %}
-											  prices[i],
+										  {% for prix in data %}
+											  {{prix}},
 										  {% endfor %}
 									]
 								}]

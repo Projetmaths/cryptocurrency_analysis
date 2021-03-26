@@ -45,24 +45,18 @@ def chart():
             row = str(donnees[i]['name'])+';'+str(donnees[i]['quote']['EUR']['price'])+';'+str(donnees[i]['last_updated'])+';'+str(donnees[i]['symbol'])+ '\n'
             csvfile.write(row)
         csvfile.close()
-        
-    tab = []
     labels = []
     data = []
     name = []
     symbol = []    
-    
     for i in range(0, lim):
         nomcrypto=str("csv/"+donnees[i]['symbol']+".csv")
-        
         with open(nomcrypto, "r") as file:  # on open les fichiers csv ici
             csv_reader=csv.reader(file)     # on lit le contenu du fichier csv ouvert juste avant, définit par la boucle for au début (ligne 75)
-            print()
             count=0
-            for row in csv_reader:          # on parse chaque ligne du fichier
-                         
+            for row in csv_reader:          # on parse chaque ligne du fichier       
                 lignes=str(row).split(';')  # on split les éléments avec le caractère `;` définit plus haut dans le code
-                   
+                tab = []   
                 for ligne in lignes:  
                     tab.append(ligne)
                     
@@ -71,18 +65,19 @@ def chart():
                 val3=tab[2]
                 val4=tab[3]  
 
+                print(tab[0])
+
                 val1=val1.replace("['", "")
                 val3=val3.replace("T", " | ")
                 val3=val3.replace("Z", "")
                 val4=val4.replace("']", "")
 
-                labels.append(val3) #insérer date pour axe x   
+                labels.append(val3) #insérer date pour axe x
                 data.append(val2) #insérer prix pour axe y
                 name.append(val1)
                 symbol.append(val4)
 
-                count+=1
-                
+                count+=1           
     return render_template('chart.html', labels = labels, data = data, lim=lim, count=count, name=name, symbol=symbol) 
 
 @app.errorhandler(404)
