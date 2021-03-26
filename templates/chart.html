@@ -43,7 +43,7 @@
 				</div>
 				<br>
 
-				<!--<div style="width: 75%">
+				<div style="width: 75%">
 					<h2 titre="2">Ethereum</h2>
 					<div graph="2" class="dropdown">
 						<canvas id="myChart2"></canvas>
@@ -51,7 +51,7 @@
 				</div>
 				<br>
 
-				<div style="width: 75%">
+				<!-- <div style="width: 75%">
 					<h2 titre="3">Binance Coin</h2>
 					<div graph="3" class="dropdown">
 						<canvas id="myChart3"></canvas>
@@ -152,14 +152,30 @@
 					<div graph="15" class="dropdown">
 						<canvas id="myChart15"></canvas>
 					</div>
-				</div>-->
+				</div> -->
 
 
 				<script>
 					var labels = {{labels|tojson}};
 					var prices = {{data|tojson}};
-					var prix_js = {{prix|tojson}};
-					var date_js = {{date|tojson}};
+					var prix_btc_js = {{prix_btc|tojson}};
+					var date_btc_js = {{date_btc|tojson}};
+					var prix_ada_js = {{prix_ada|tojson}};
+					var date_ada_js = {{date_ada|tojson}};
+					var prix_bch_js = {{prix_bch|tojson}};
+					var date_bch_js = {{date_bch|tojson}};
+					var prix_bnb_js = {{prix_bnb|tojson}};
+					var date_bnb_js = {{date_bnb|tojson}};
+					var prix_doge_js = {{prix_doge|tojson}};
+					var date_doge_js = {{date_doge|tojson}};
+					var prix_eth_js = {{prix_eth|tojson}};
+					var date_eth_js = {{date_eth|tojson}};
+					var prix_link_js = {{prix_link|tojson}};
+					var date_link_js = {{date_link|tojson}};
+					var prix_ltc_js = {{prix_ltc|tojson}};
+					var date_ltc_js = {{date_ltc|tojson}};
+					var prix_luna_js = {{prix_luna|tojson}};
+					var date_luna_js = {{date_luna|tojson}};
 					var nb_csv = {{lim}};
 					var rows = {{count}};
 					var names = {{name|tojson}};
@@ -173,8 +189,6 @@
 					// console.log(nb_csv);
 					// console.log(labels);
 					// console.log(prices);
-					console.log(prix_js)
-					console.log(date_js)
 					console.log("==================================================")
 				
 					
@@ -192,24 +206,24 @@
 					}
 				
 					// console.log(tab);
-					for ( var i = 1 ; i <= (nb_csv) ; i++) {
+					
 						// console.log(i);
 						var ctx = document.getElementById('myChart1').getContext('2d');
 						var data = {
 								labels: [
-										{% for label in date %}	
+										{% for label in date_btc %}	
 											"{{label}}",
 										{% endfor %}
 								],
 								datasets: [{
 									data: [
-										  {% for p in prix %}
+										  {% for p in prix_btc %}
 											  "{{p}}",
 										  {% endfor %}
 									],
 									backgroundColor: [
 										'rgba(255, 99, 132, 0.2)',
-										'rgba(255, 159, 64, 0.2)'
+										
 									],
 
 									label: [
@@ -226,7 +240,37 @@
 						var chart = new Chart(ctx, config);
 						//console.log(i)
 						
-					}; 	
+						var ctx = document.getElementById('myChart2').getContext('2d');
+						var data = {
+								labels: [
+										{% for label in date_eth %}	
+											"{{label}}",
+										{% endfor %}
+								],
+								datasets: [{
+									data: [
+										  {% for p in prix_eth %}
+											  "{{p}}",
+										  {% endfor %}
+									],
+									backgroundColor: [
+										'rgba(255, 159, 64, 0.2)',
+									],
+
+									label: [
+										'Prix',
+										
+									]
+								}]
+							};
+						var config = {
+							type: 'bar',
+							data: data,
+						};
+				
+						var chart = new Chart(ctx, config);
+						//console.log(i)
+						
 				
 					$("[titre]").click(function(){
 						var affiche = $(this).attr("titre");
