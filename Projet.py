@@ -40,13 +40,14 @@ def chart():
         
     for i in range(0, lim):
         nomcrypto=str("csv/"+donnees[i]['symbol']+".csv")
-        os.remove(nomcrypto)
         with open(nomcrypto, "w") as csvfile:
             row = str(donnees[i]['name'])+';'+str(donnees[i]['quote']['EUR']['price'])+';'+str(donnees[i]['last_updated'])+';'+str(donnees[i]['symbol'])+ '\n'
             csvfile.write(row)
         csvfile.close()
     labels = []
     data = []
+    prix = []
+    date = []
     name = []
     symbol = []    
     for i in range(0, lim):
@@ -56,6 +57,7 @@ def chart():
             count=0
             for row in csv_reader:          # on parse chaque ligne du fichier       
                 lignes=str(row).split(';')  # on split les éléments avec le caractère `;` définit plus haut dans le code
+                
                 tab = []   
                 for ligne in lignes:  
                     tab.append(ligne)
@@ -63,23 +65,30 @@ def chart():
                 val1=tab[0]
                 val2=tab[1]
                 val3=tab[2]
-                val4=tab[3]  
-
-                print(tab[0])
+                val4=tab[3]
+            
 
                 val1=val1.replace("['", "")
                 val3=val3.replace("T", " | ")
                 val3=val3.replace("Z", "")
                 val4=val4.replace("']", "")
-
+                
+                    
                 labels.append(val3) #insérer date pour axe x
                 data.append(val2) #insérer prix pour axe y
                 name.append(val1)
                 symbol.append(val4)
+                
+                
+                
+                if name[i] == "Bitcoin":
+                    prix.append(val2)
+                    date.append(val3)
 
-                count+=1           
-    return render_template('chart.html', labels = labels, data = data, lim=lim, count=count, name=name, symbol=symbol) 
-
+                count+=1         
+                
+    return render_template('chart.html', labels = labels, data = data, prix = prix, date = date, lim=lim, count=count, name=name, symbol=symbol)   
+    
 @app.errorhandler(404)
 def page_not_found(e):
     return render_template('404.html'), 404

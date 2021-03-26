@@ -158,6 +158,8 @@
 				<script>
 					var labels = {{labels|tojson}};
 					var prices = {{data|tojson}};
+					var prix_js = {{prix|tojson}};
+					var date_js = {{date|tojson}};
 					var nb_csv = {{lim}};
 					var rows = {{count}};
 					var names = {{name|tojson}};
@@ -169,8 +171,10 @@
 					console.log("Paramètres")
 					// console.log(rows);
 					// console.log(nb_csv);
-					console.log(labels);
-					console.log(prices);
+					// console.log(labels);
+					// console.log(prices);
+					console.log(prix_js)
+					console.log(date_js)
 					console.log("==================================================")
 				
 					
@@ -193,21 +197,29 @@
 						var ctx = document.getElementById('myChart1').getContext('2d');
 						var data = {
 								labels: [
-										{% for label in labels %}	
+										{% for label in date %}	
 											"{{label}}",
 										{% endfor %}
 								],
 								datasets: [{
-									label: 'Price',
 									data: [
-										  {% for prix in data %}
-											  {{prix}},
+										  {% for p in prix %}
+											  "{{p}}",
 										  {% endfor %}
+									],
+									backgroundColor: [
+										'rgba(255, 99, 132, 0.2)',
+										'rgba(255, 159, 64, 0.2)'
+									],
+
+									label: [
+										'Prix',
+										
 									]
 								}]
 							};
 						var config = {
-							type: 'line',
+							type: 'bar',
 							data: data,
 						};
 				
