@@ -92,7 +92,7 @@
 				<br>
 
 				<div style="width: 75%">
-					<h2 titre="8">Uniswap</h2>
+					<h2 titre="8">Litecoin</h2>
 					<div graph="8" class="dropdown">
 						<canvas id="myChart8"></canvas>
 					</div>
@@ -100,7 +100,7 @@
 				<br>
 
 				<div style="width: 75%">
-					<h2 titre="9">Litecoin</h2>
+					<h2 titre="9">Chainlink</h2>
 					<div graph="9" class="dropdown">
 						<canvas id="myChart9"></canvas>
 					</div>
@@ -108,7 +108,7 @@
 				<br>
 
 				<div style="width: 75%">
-					<h2 titre="10">Chainlink</h2>
+					<h2 titre="10">Bitcoin Cash</h2>
 					<div graph="10" class="dropdown">
 						<canvas id="myChart10"></canvas>
 					</div>
@@ -116,7 +116,7 @@
 				<br>
 
 				<div style="width: 75%">
-					<h2 titre="11">Bitcoin Cash</h2>
+					<h2 titre="11">Stellar</h2>
 					<div graph="11" class="dropdown">
 						<canvas id="myChart11"></canvas>
 					</div>
@@ -124,7 +124,7 @@
 				<br>
 
 				<div style="width: 75%">
-					<h2 titre="12">Stellar</h2>
+					<h2 titre="12">USD Coin</h2>
 					<div graph="12" class="dropdown">
 						<canvas id="myChart12"></canvas>
 					</div>
@@ -132,7 +132,7 @@
 				<br>
 
 				<div style="width: 75%">
-					<h2 titre="13">USD Coin</h2>
+					<h2 titre="13">Wrapped Bitcoin</h2>
 					<div graph="13" class="dropdown">
 						<canvas id="myChart13"></canvas>
 					</div>
@@ -140,7 +140,7 @@
 				<br>
 
 				<div style="width: 75%">
-					<h2 titre="14">Wrapped Bitcoin</h2>
+					<h2 titre="14">Dogecoin</h2>
 					<div graph="14" class="dropdown">
 						<canvas id="myChart14"></canvas>
 					</div>
@@ -148,29 +148,14 @@
 				<br>
 
 				<div style="width: 75%">
-					<h2 titre="15">Dogecoin</h2>
+					<h2 titre="15">FileCoin</h2>
 					<div graph="15" class="dropdown">
 						<canvas id="myChart15"></canvas>
-					</div>
-				</div>
-				<br>
-
-				<div style="width: 75%">
-					<h2 titre="16">FileCoin</h2>
-					<div graph="16" class="dropdown">
-						<canvas id="myChart16"></canvas>
 					</div>
 				</div>
 
 
 				<script>
-					/*
-					tab_data_prix = ["prix_btc","prix_ada","prix_bch","prix_bnb","prix_doge","prix_eth","prix_link","prix_ltc","prix_luna"];
-					tab_data_date = ["date_btc","date_ada","date_bch","date_bnb","date_doge","date_eth","date_link","date_ltc","date_luna"];
-					for (var i = 0; i < (tab_data_prix.length); i++) { //nb_csv*rows donnera le nombre total de lignes présentes à travers tous
-						
-					}*/
-
 
 					var prix_btc_js = {{prix_btc|tojson}};
 					var date_btc_js = {{date_btc|tojson}};
@@ -259,10 +244,6 @@
 						}
 						
 					}
-					// NORMALEMENT TOUS LES GRAPHES SONT BIEN FAITS (à vérifier)
-					// console.log(tab);
-					
-						// console.log(i);
 						var ctx = document.getElementById('myChart1').getContext('2d');
 						var data = {
 								labels: [
@@ -293,7 +274,6 @@
 						};
 				
 						var chart = new Chart(ctx, config);
-						//console.log(i)
 						
 						var ctx = document.getElementById('myChart2').getContext('2d');
 						var data = {
@@ -324,7 +304,6 @@
 						};
 				
 						var chart = new Chart(ctx, config);
-						//console.log(i)
 
 						var ctx = document.getElementById('myChart3').getContext('2d');
 						var data = {
@@ -355,36 +334,6 @@
 						};
 
 						var chart = new Chart(ctx, config);
-						//console.log(i)
-
-						var ctx = document.getElementById('myChart3').getContext('2d');
-						var data = {
-								labels: [
-										{% for label in date_bnb %}	
-											"{{label}}",
-										{% endfor %}
-								],
-								datasets: [{
-									data: [
-										  {% for p in prix_bnb %}
-											  "{{p}}",
-										  {% endfor %}
-									],
-									backgroundColor: [
-										'rgba(255, 159, 64, 0.2)',
-									],
-
-									label: [
-										'Prix',
-										
-									]
-								}]
-							};
-						var config = {
-							type: 'bar',
-							data: data,
-						};
-
 
 						var ctx = document.getElementById('myChart4').getContext('2d');
 						var data = {
@@ -414,6 +363,7 @@
 							data: data,
 						};
 
+						var chart = new Chart(ctx, config);
 
 						var ctx = document.getElementById('myChart5').getContext('2d');
 						var data = {
@@ -443,6 +393,8 @@
 							data: data,
 						};
 
+						var chart = new Chart(ctx, config);
+
 						var ctx = document.getElementById('myChart6').getContext('2d');
 						var data = {
 								labels: [
@@ -471,6 +423,7 @@
 							data: data,
 						};
 
+						var chart = new Chart(ctx, config);
 
 						var ctx = document.getElementById('myChart7').getContext('2d');
 						var data = {
@@ -500,35 +453,9 @@
 							data: data,
 						};
 
+						var chart = new Chart(ctx, config);
+
 						var ctx = document.getElementById('myChart8').getContext('2d');
-						var data = {
-								labels: [
-										{% for label in date_uni %}	
-											"{{label}}",
-										{% endfor %}
-								],
-								datasets: [{
-									data: [
-										  {% for p in prix_uni %}
-											  "{{p}}",
-										  {% endfor %}
-									],
-									backgroundColor: [
-										'rgba(255, 159, 64, 0.2)',
-									],
-
-									label: [
-										'Prix',
-										
-									]
-								}]
-							};
-						var config = {
-							type: 'bar',
-							data: data,
-						};
-
-						var ctx = document.getElementById('myChart9').getContext('2d');
 						var data = {
 								labels: [
 										{% for label in date_ltc %}	
@@ -556,7 +483,9 @@
 							data: data,
 						};
 
-						var ctx = document.getElementById('myChart10').getContext('2d');
+						var chart = new Chart(ctx, config);
+
+						var ctx = document.getElementById('myChart9').getContext('2d');
 						var data = {
 								labels: [
 										{% for label in date_link %}	
@@ -584,7 +513,9 @@
 							data: data,
 						};
 
-						var ctx = document.getElementById('myChart11').getContext('2d');
+						var chart = new Chart(ctx, config);
+
+						var ctx = document.getElementById('myChart10').getContext('2d');
 						var data = {
 								labels: [
 										{% for label in date_bch %}	
@@ -612,7 +543,9 @@
 							data: data,
 						};
 
-						var ctx = document.getElementById('myChart12').getContext('2d');
+						var chart = new Chart(ctx, config);
+
+						var ctx = document.getElementById('myChart11').getContext('2d');
 						var data = {
 								labels: [
 										{% for label in date_xlm %}	
@@ -640,8 +573,9 @@
 							data: data,
 						};
 
+						var chart = new Chart(ctx, config);
 
-						var ctx = document.getElementById('myChart13').getContext('2d');
+						var ctx = document.getElementById('myChart12').getContext('2d');
 						var data = {
 								labels: [
 										{% for label in date_usdc %}	
@@ -669,7 +603,9 @@
 							data: data,
 						};
 
-						var ctx = document.getElementById('myChart14').getContext('2d');
+						var chart = new Chart(ctx, config);
+
+						var ctx = document.getElementById('myChart13').getContext('2d');
 						var data = {
 								labels: [
 										{% for label in date_wbtc %}	
@@ -697,7 +633,9 @@
 							data: data,
 						};
 
-						var ctx = document.getElementById('myChart15').getContext('2d');
+						var chart = new Chart(ctx, config);
+
+						var ctx = document.getElementById('myChart14').getContext('2d');
 						var data = {
 								labels: [
 										{% for label in date_doge %}	
@@ -725,8 +663,9 @@
 							data: data,
 						};
 
+						var chart = new Chart(ctx, config);
 
-						var ctx = document.getElementById('myChart16').getContext('2d');
+						var ctx = document.getElementById('myChart15').getContext('2d');
 						var data = {
 								labels: [
 										{% for label in date_fil %}	
@@ -753,6 +692,8 @@
 							type: 'bar',
 							data: data,
 						};
+						
+						var chart = new Chart(ctx, config);
 
 						
 				
