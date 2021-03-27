@@ -13,7 +13,7 @@ app = Flask(__name__)
 scheduler = BackgroundScheduler()
 
 # API KEY
-api_key = os.getenv("API_KEY")
+api_key = "4aaaa51e-2ac2-48ce-8e75-a49c61efeb33" #os.getenv("API_KEY")
 
 if not api_key:
     print("API_KEY variable missing ")
@@ -46,26 +46,65 @@ def chart():
         csvfile.close()
     labels = []
     data = []
+    
     prix_btc = []
     date_btc = []
+
     prix_ada = []
     date_ada = []
+
     prix_bch = []
     date_bch = []
+
     prix_bnb = []
     date_bnb = []
+
     prix_doge = []
     date_doge = []
+
     prix_dot = []
     date_dot = []
+
     prix_eth = []
     date_eth = []
+
     prix_link = []
     date_link = []
+
     prix_ltc = []
     date_ltc = []
+
     prix_luna = []
     date_luna = []
+
+    prix_klay = []
+    date_klay = []
+
+    prix_theta = []
+    date_theta = []
+
+    prix_uni = []
+    date_uni = []
+
+    prix_usdc = []
+    date_usdc = []
+
+    prix_usdt = []
+    date_usdt = []
+
+    prix_wbtc = []
+    date_wbtc = []
+
+    prix_xlm = []
+    date_xlm = []
+
+    prix_xrp = []
+    date_xrp = []
+
+    prix_fil = []
+    date_fil = []
+
+
     name = []
     symbol = []    
     for i in range(0, lim):
@@ -94,9 +133,8 @@ def chart():
                     
                 labels.append(val3) #insérer date pour axe x
                 data.append(val2) #insérer prix pour axe y
-                name.append(val1)
-                symbol.append(val4)
-                
+                name.append(val1) #insérer nom
+                symbol.append(val4) #insérer acronyme
                 
                 
                 if name[i] == "Bitcoin":
@@ -120,8 +158,8 @@ def chart():
                     date_doge.append(val3)
                 
                 if name[i] == "Polkadot":
-                    prix_doge.append(val2)
-                    date_doge.append(val3)
+                    prix_dot.append(val2)
+                    date_dot.append(val3)
 
                 if name[i] == "Ethereum":
                     prix_eth.append(val2)
@@ -139,10 +177,49 @@ def chart():
                     prix_luna.append(val2)
                     date_luna.append(val3)
 
+                if name[i] == "Klaytn":
+                    prix_klay.append(val2)
+                    date_klay.append(val3)
+
+                if name[i] == "Theta":
+                    prix_theta.append(val2)
+                    date_theta.append(val3)
+
+                if name[i] == "Uniswap":
+                    prix_uni.append(val2)
+                    date_uni.append(val3)
+
+                if name[i] == "USD Coin":
+                    prix_usdc.append(val2)
+                    date_usdc.append(val3)
+
+                if name[i] == "Tether":
+                    prix_usdt.append(val2)
+                    date_usdt.append(val3)
+
+                if name[i] == "Wrapped Bitcoin":
+                    prix_wbtc.append(val2)
+                    date_wbtc.append(val3)
+
+                if name[i] == "Stellar":
+                    prix_xlm.append(val2)
+                    date_xlm.append(val3)
+
+                if name[i] == "XRP":
+                    prix_xrp.append(val2)
+                    date_xrp.append(val3)
+
+                if name[i] == "Filecoin":
+                    prix_fil.append(val2)
+                    date_fil.append(val3)
+
                 count+=1         
-                
-    return render_template('chart.html', labels = labels, data = data,  lim=lim, count=count, name=name, symbol=symbol, prix_btc = prix_btc, date_btc = date_btc, prix_ada = prix_ada, date_ada = date_ada , prix_bch = prix_bch, date_bch = date_bch, prix_bnb = prix_bnb, date_bnb = date_bnb, prix_doge = prix_doge, date_doge = date_doge,prix_dot = prix_dot, date_dot = date_dot,prix_eth = prix_eth, date_eth = date_eth,prix_link = prix_link, date_link = date_link,prix_ltc = prix_ltc, date_ltc = date_ltc,prix_luna = prix_luna, date_luna = date_luna)   
+
+              
+    return render_template('chart.html', labels = labels, data = data,  lim=lim, count=count, name=name, symbol=symbol, prix_btc = prix_btc, date_btc = date_btc, prix_ada = prix_ada, date_ada = date_ada , prix_bch = prix_bch, date_bch = date_bch, prix_bnb = prix_bnb, date_bnb = date_bnb, prix_doge = prix_doge, date_doge = date_doge,prix_dot = prix_dot, date_dot = date_dot,prix_eth = prix_eth, date_eth = date_eth,prix_link = prix_link, date_link = date_link,prix_ltc = prix_ltc, date_ltc = date_ltc,prix_luna = prix_luna, date_luna = date_luna ,prix_klay = prix_klay,date_klay = date_klay,prix_theta = prix_theta,date_theta = date_theta,prix_uni = prix_uni,date_uni = date_uni,prix_usdc = prix_usdc,date_usdc = date_usdc,prix_usdt = prix_usdt,date_usdt = date_usdt,prix_wbtc = prix_wbtc,date_wbtc = date_wbtc,prix_xlm = prix_xlm,date_xlm = date_xlm,prix_xrp = prix_xrp,date_xrp = date_xrp, prix_fil = prix_fil, date_fil = date_fil) 
+
     
+
 @app.errorhandler(404)
 def page_not_found(e):
     return render_template('404.html'), 404
