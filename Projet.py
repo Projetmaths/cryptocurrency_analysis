@@ -108,8 +108,8 @@ def chart():
     name = []
     symbol = []    
     for i in range(0, lim):
-        mbol']+".csv")
-        with open(nomcrypto, "r") as file: nomcrypto=str("csv/"+donnees[i]['sy # on open les fichiers csv ici
+        nomcrypto=str("csv/"+donnees[i]['symbol']+".csv")
+        with open(nomcrypto, "r") as file:  # on open les fichiers csv ici
             csv_reader=csv.reader(file)     # on lit le contenu du fichier csv ouvert juste avant, définit par la boucle for au début (ligne 75)
             count=0
             for row in csv_reader:          # on parse chaque ligne du fichier       
@@ -227,6 +227,6 @@ def page_not_found(e):
     return render_template('404.html'), 404
 
 if __name__ == '__main__':
-    scheduler.add_job(id = 'Scheduled task', func = chart, trigger = 'interval', seconds = 3600 )
+    scheduler.add_job(id = 'Scheduled task', func = chart, trigger = 'interval', seconds = 60 )
     scheduler.start()
     app.run(debug=True, host='localhost')
