@@ -13,7 +13,7 @@ app = Flask(__name__)
 scheduler = BackgroundScheduler()
 
 # API KEY
-api_key = "4aaaa51e-2ac2-48ce-8e75-a49c61efeb33" #os.getenv("API_KEY")
+api_key = os.getenv("API_KEY")
 
 if not api_key:
     print("API_KEY variable missing ")
@@ -25,7 +25,7 @@ def index():
     
 @app.route('/chart')
 def chart():
-    lim=15
+    lim=5
     url = 'https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest'
     parameters = {'start': '1', 'limit': lim, 'convert': 'EUR'}
     headers = {'Accepts': 'application/json','X-CMC_PRO_API_KEY': api_key }
@@ -40,7 +40,7 @@ def chart():
         
     for i in range(0, lim):
         nomcrypto=str("csv/"+donnees[i]['symbol']+".csv")
-        with open(nomcrypto, "w") as csvfile:
+        with open(nomcrypto, "a") as csvfile:
             row = str(donnees[i]['name'])+';'+str(donnees[i]['quote']['EUR']['price'])+';'+str(donnees[i]['last_updated'])+';'+str(donnees[i]['symbol'])+ '\n'
             csvfile.write(row)
         csvfile.close()
@@ -108,8 +108,8 @@ def chart():
     name = []
     symbol = []    
     for i in range(0, lim):
-        nomcrypto=str("csv/"+donnees[i]['symbol']+".csv")
-        with open(nomcrypto, "r") as file:  # on open les fichiers csv ici
+        mbol']+".csv")
+        with open(nomcrypto, "r") as file: nomcrypto=str("csv/"+donnees[i]['sy # on open les fichiers csv ici
             csv_reader=csv.reader(file)     # on lit le contenu du fichier csv ouvert juste avant, définit par la boucle for au début (ligne 75)
             count=0
             for row in csv_reader:          # on parse chaque ligne du fichier       
@@ -136,80 +136,82 @@ def chart():
                 name.append(val1) #insérer nom
                 symbol.append(val4) #insérer acronyme
                 
+                print(tab[0])
+                print(tab)
                 
-                if name[i] == "Bitcoin":
+                if tab[0] == "['Bitcoin":
                     prix_btc.append(val2)
                     date_btc.append(val3)
                     
-                if name[i] == "Cardano":
+                if tab[0] == "['Cardano":
                     prix_ada.append(val2)
                     date_ada.append(val3)
                     
-                if name[i] == "Bitcoin Cash":
+                if tab[0] == "['Bitcoin Cash":
                     prix_bch.append(val2)
                     date_bch.append(val3)
                 
-                if name[i] == "Binance Coin":
+                if tab[0] == "['Binance Coin":
                     prix_bnb.append(val2)
                     date_bnb.append(val3)
                 
-                if name[i] == "Dogecoin":
+                if tab[0] == "['Dogecoin":
                     prix_doge.append(val2)
                     date_doge.append(val3)
                 
-                if name[i] == "Polkadot":
+                if tab[0] == "['Polkadot":
                     prix_dot.append(val2)
                     date_dot.append(val3)
 
-                if name[i] == "Ethereum":
+                if tab[0] == "['Ethereum":
                     prix_eth.append(val2)
                     date_eth.append(val3)
                 
-                if name[i] == "Chainlink":
+                if tab[0] == "['Chainlink":
                     prix_link.append(val2)
                     date_link.append(val3)
                 
-                if name[i] == "Litecoin":
+                if tab[0] == "['Litecoin":
                     prix_ltc.append(val2)
                     date_ltc.append(val3)
                 
-                if name[i] == "Terra":
+                if tab[0] == "['Terra":
                     prix_luna.append(val2)
                     date_luna.append(val3)
 
-                if name[i] == "Klaytn":
+                if tab[0] == "['Klaytn":
                     prix_klay.append(val2)
                     date_klay.append(val3)
 
-                if name[i] == "Theta":
+                if tab[0] == "['Theta":
                     prix_theta.append(val2)
                     date_theta.append(val3)
 
-                if name[i] == "Uniswap":
+                if tab[0] == "['Uniswap":
                     prix_uni.append(val2)
                     date_uni.append(val3)
 
-                if name[i] == "USD Coin":
+                if tab[0] == "['USD Coin":
                     prix_usdc.append(val2)
                     date_usdc.append(val3)
 
-                if name[i] == "Tether":
+                if tab[0] == "['Tether":
                     prix_usdt.append(val2)
                     date_usdt.append(val3)
 
-                if name[i] == "Wrapped Bitcoin":
+                if tab[0] == "['Wrapped Bitcoin":
                     prix_wbtc.append(val2)
                     date_wbtc.append(val3)
 
-                if name[i] == "Stellar":
+                if tab[0] == "['Stellar":
                     prix_xlm.append(val2)
                     date_xlm.append(val3)
 
-                if name[i] == "XRP":
+                if tab[0] == "['XRP":
                     prix_xrp.append(val2)
                     date_xrp.append(val3)
 
-                if name[i] == "Filecoin":
+                if tab[0] == "['Filecoin":
                     prix_fil.append(val2)
                     date_fil.append(val3)
 
