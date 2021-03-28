@@ -9,6 +9,7 @@
 {% endblock %}
 
 {% block link %}
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/index.css') }}">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
 <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
@@ -30,7 +31,7 @@
 		</div>
 	</div>
 	<div class="dashboard">
-		<div class="dash-title">Charts</div>
+		<div class="dash-title">Charts<br><a href="{{ url_for('chart') }}"><button type="button" class="btn btn-primary"></buttontype>Actualiser</button></a></div>
 		<div class="dash-datatable">
 			<div class="dash-datatable-title"><i class="fas fa-table"></i> DataTable example</div>
 			<div class="dash-datatable-container">
