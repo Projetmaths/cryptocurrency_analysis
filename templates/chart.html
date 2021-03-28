@@ -9,7 +9,6 @@
 {% endblock %}
 
 {% block link %}
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/index.css') }}">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
 <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
@@ -31,7 +30,7 @@
 		</div>
 	</div>
 	<div class="dashboard">
-		<div class="dash-title">Charts<br><a href="{{ url_for('chart') }}"><button type="button" class="btn btn-primary"></buttontype>Actualiser</button></a></div>
+		<div class="dash-title">Charts<br><a href="{{ url_for('chart') }}"><button type="button" class="refreshbutton"></buttontype>Actualiser</button></a></div>
 		<div class="dash-datatable">
 			<div class="dash-datatable-title"><i class="fas fa-table"></i> DataTable example</div>
 			<div class="dash-datatable-container">
@@ -74,87 +73,6 @@
 						<canvas id="myChart5"></canvas>
 					</div>
 				</div>
-				<br>
-
-				<div style="width: 75%">
-					<h2 titre="6">Polkadot</h2>
-					<div graph="6" class="dropdown">
-						<canvas id="myChart6"></canvas>
-					</div>
-				</div>
-				<br>
-
-				<div style="width: 75%">
-					<h2 titre="7">XRP</h2>
-					<div graph="7" class="dropdown">
-						<canvas id="myChart7"></canvas>
-					</div>
-				</div>
-				<br>
-
-				<div style="width: 75%">
-					<h2 titre="8">Litecoin</h2>
-					<div graph="8" class="dropdown">
-						<canvas id="myChart8"></canvas>
-					</div>
-				</div>
-				<br>
-
-				<div style="width: 75%">
-					<h2 titre="9">Chainlink</h2>
-					<div graph="9" class="dropdown">
-						<canvas id="myChart9"></canvas>
-					</div>
-				</div>
-				<br>
-
-				<div style="width: 75%">
-					<h2 titre="10">Bitcoin Cash</h2>
-					<div graph="10" class="dropdown">
-						<canvas id="myChart10"></canvas>
-					</div>
-				</div>
-				<br>
-
-				<div style="width: 75%">
-					<h2 titre="11">Stellar</h2>
-					<div graph="11" class="dropdown">
-						<canvas id="myChart11"></canvas>
-					</div>
-				</div>
-				<br>
-
-				<div style="width: 75%">
-					<h2 titre="12">USD Coin</h2>
-					<div graph="12" class="dropdown">
-						<canvas id="myChart12"></canvas>
-					</div>
-				</div>
-				<br>
-
-				<div style="width: 75%">
-					<h2 titre="13">Wrapped Bitcoin</h2>
-					<div graph="13" class="dropdown">
-						<canvas id="myChart13"></canvas>
-					</div>
-				</div>
-				<br>
-
-				<div style="width: 75%">
-					<h2 titre="14">Dogecoin</h2>
-					<div graph="14" class="dropdown">
-						<canvas id="myChart14"></canvas>
-					</div>
-				</div>
-				<br>
-
-				<div style="width: 75%">
-					<h2 titre="15">FileCoin</h2>
-					<div graph="15" class="dropdown">
-						<canvas id="myChart15"></canvas>
-					</div>
-				</div>
-
 
 				<script>
 
@@ -258,15 +176,14 @@
 											  "{{p}}",
 										  {% endfor %}
 									],
-									backgroundColor: [
-										'rgba(255, 99, 132, 0.2)',
-										
-									],
 
-									label: [
-										'Prix en €',
-										
-									]
+									fill:false,
+
+									pointStyle:"rectRot",
+
+									borderColor:"#32CD32",
+
+									label:'Prix en €',
 								}]
 							};
 						var config = {
@@ -289,9 +206,12 @@
 											  "{{p}}",
 										  {% endfor %}
 									],
-									backgroundColor: [
-										'rgba(255, 159, 64, 0.2)',
-									],
+
+									fill:false,
+
+									pointStyle:"rectRot",
+
+									borderColor:"#32CD32",
 
 									label: [
 										'Prix en €',
@@ -319,9 +239,11 @@
 											  "{{p}}",
 										  {% endfor %}
 									],
-									backgroundColor: [
-										'rgba(255, 159, 64, 0.2)',
-									],
+									fill:false,
+
+									pointStyle:"rectRot",
+
+									borderColor:"#32CD32",
 
 									label: [
 										'Prix en €',
@@ -349,9 +271,11 @@
 											  "{{p}}",
 										  {% endfor %}
 									],
-									backgroundColor: [
-										'rgba(255, 159, 64, 0.2)',
-									],
+									fill:false,
+
+									pointStyle:"rectRot",
+
+									borderColor:"#32CD32",
 
 									label: [
 										'Prix en €',
@@ -379,9 +303,11 @@
 											  "{{p}}",
 										  {% endfor %}
 									],
-									backgroundColor: [
-										'rgba(255, 159, 64, 0.2)',
-									],
+									fill:false,
+
+									pointStyle:"rectRot",
+
+									borderColor:"#32CD32",
 
 									label: [
 										'Prix en €',
@@ -395,308 +321,6 @@
 						};
 
 						var chart = new Chart(ctx, config);
-
-						var ctx = document.getElementById('myChart6').getContext('2d');
-						var data = {
-								labels: [
-										{% for label in date_dot %}	
-											"{{label}}",
-										{% endfor %}
-								],
-								datasets: [{
-									data: [
-										  {% for p in prix_dot %}
-											  "{{p}}",
-										  {% endfor %}
-									],
-									backgroundColor: [
-										'rgba(255, 159, 64, 0.2)',
-									],
-
-									label: [
-										'Prix en €',
-										
-									]
-								}]
-							};
-						var config = {
-							type: 'line',
-							data: data,
-						};
-
-						var chart = new Chart(ctx, config);
-
-						var ctx = document.getElementById('myChart7').getContext('2d');
-						var data = {
-								labels: [
-										{% for label in date_xrp %}	
-											"{{label}}",
-										{% endfor %}
-								],
-								datasets: [{
-									data: [
-										  {% for p in prix_xrp %}
-											  "{{p}}",
-										  {% endfor %}
-									],
-									backgroundColor: [
-										'rgba(255, 159, 64, 0.2)',
-									],
-
-									label: [
-										'Prix en €',
-										
-									]
-								}]
-							};
-						var config = {
-							type: 'line',
-							data: data,
-						};
-
-						var chart = new Chart(ctx, config);
-
-						var ctx = document.getElementById('myChart8').getContext('2d');
-						var data = {
-								labels: [
-										{% for label in date_ltc %}	
-											"{{label}}",
-										{% endfor %}
-								],
-								datasets: [{
-									data: [
-										  {% for p in prix_ltc %}
-											  "{{p}}",
-										  {% endfor %}
-									],
-									backgroundColor: [
-										'rgba(255, 159, 64, 0.2)',
-									],
-
-									label: [
-										'Prix en €',
-										
-									]
-								}]
-							};
-						var config = {
-							type: 'line',
-							data: data,
-						};
-
-						var chart = new Chart(ctx, config);
-
-						var ctx = document.getElementById('myChart9').getContext('2d');
-						var data = {
-								labels: [
-										{% for label in date_link %}	
-											"{{label}}",
-										{% endfor %}
-								],
-								datasets: [{
-									data: [
-										  {% for p in prix_link %}
-											  "{{p}}",
-										  {% endfor %}
-									],
-									backgroundColor: [
-										'rgba(255, 159, 64, 0.2)',
-									],
-
-									label: [
-										'Prix en €',
-										
-									]
-								}]
-							};
-						var config = {
-							type: 'line',
-							data: data,
-						};
-
-						var chart = new Chart(ctx, config);
-
-						var ctx = document.getElementById('myChart10').getContext('2d');
-						var data = {
-								labels: [
-										{% for label in date_bch %}	
-											"{{label}}",
-										{% endfor %}
-								],
-								datasets: [{
-									data: [
-										  {% for p in prix_bch %}
-											  "{{p}}",
-										  {% endfor %}
-									],
-									backgroundColor: [
-										'rgba(255, 159, 64, 0.2)',
-									],
-
-									label: [
-										'Prix en €',
-										
-									]
-								}]
-							};
-						var config = {
-							type: 'line',
-							data: data,
-						};
-
-						var chart = new Chart(ctx, config);
-
-						var ctx = document.getElementById('myChart11').getContext('2d');
-						var data = {
-								labels: [
-										{% for label in date_xlm %}	
-											"{{label}}",
-										{% endfor %}
-								],
-								datasets: [{
-									data: [
-										  {% for p in prix_xlm %}
-											  "{{p}}",
-										  {% endfor %}
-									],
-									backgroundColor: [
-										'rgba(255, 159, 64, 0.2)',
-									],
-
-									label: [
-										'Prix en €',
-										
-									]
-								}]
-							};
-						var config = {
-							type: 'line',
-							data: data,
-						};
-
-						var chart = new Chart(ctx, config);
-
-						var ctx = document.getElementById('myChart12').getContext('2d');
-						var data = {
-								labels: [
-										{% for label in date_usdc %}	
-											"{{label}}",
-										{% endfor %}
-								],
-								datasets: [{
-									data: [
-										  {% for p in prix_usdc %}
-											  "{{p}}",
-										  {% endfor %}
-									],
-									backgroundColor: [
-										'rgba(255, 159, 64, 0.2)',
-									],
-
-									label: [
-										'Prix en €',
-										
-									]
-								}]
-							};
-						var config = {
-							type: 'line',
-							data: data,
-						};
-
-						var chart = new Chart(ctx, config);
-
-						var ctx = document.getElementById('myChart13').getContext('2d');
-						var data = {
-								labels: [
-										{% for label in date_wbtc %}	
-											"{{label}}",
-										{% endfor %}
-								],
-								datasets: [{
-									data: [
-										  {% for p in prix_wbtc %}
-											  "{{p}}",
-										  {% endfor %}
-									],
-									backgroundColor: [
-										'rgba(255, 159, 64, 0.2)',
-									],
-
-									label: [
-										'Prix en €',
-										
-									]
-								}]
-							};
-						var config = {
-							type: 'line',
-							data: data,
-						};
-
-						var chart = new Chart(ctx, config);
-
-						var ctx = document.getElementById('myChart14').getContext('2d');
-						var data = {
-								labels: [
-										{% for label in date_doge %}	
-											"{{label}}",
-										{% endfor %}
-								],
-								datasets: [{
-									data: [
-										  {% for p in prix_doge %}
-											  "{{p}}",
-										  {% endfor %}
-									],
-									backgroundColor: [
-										'rgba(255, 159, 64, 0.2)',
-									],
-
-									label: [
-										'Prix en €',
-										
-									]
-								}]
-							};
-						var config = {
-							type: 'line',
-							data: data,
-						};
-
-						var chart = new Chart(ctx, config);
-
-						var ctx = document.getElementById('myChart15').getContext('2d');
-						var data = {
-								labels: [
-										{% for label in date_fil %}	
-											"{{label}}",
-										{% endfor %}
-								],
-								datasets: [{
-									data: [
-										  {% for p in prix_fil %}
-											  "{{p}}",
-										  {% endfor %}
-									],
-									backgroundColor: [
-										'rgba(255, 159, 64, 0.2)',
-									],
-
-									label: [
-										'Prix en €',
-										
-									]
-								}]
-							};
-						var config = {
-							type: 'line',
-							data: data,
-						};
-
-						var chart = new Chart(ctx, config);
-
-						
 				
 					$("[titre]").click(function(){
 						var affiche = $(this).attr("titre");
