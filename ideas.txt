@@ -1,0 +1,34 @@
+Application complète web permettant de suivre le cours de la bourse sur la cryptomonnaie.
+
+Le projet comprendrais :
+- Des API permettant de récolter les données concernant les cryptomonnaies.
+- Des scripts python permettant de traiter les données (en graphe par exemple).
+- Une interface web interactive permettant d'afficher le résultat du traitement de données.
+
+La partie API REST comprendrais :
+- Différentes API en fonction des cryptomonnaies (ou une seule API faisant tout) ?
+- Interactions entre différentes applications (ici le python et le web)
+- Récupération des données nécéssaires au projet (essayer de limiter les besoins en ressources 
+avec les requêtes et les réponses)
+
+La partie Python devra comprendre :
+- La récupération (sous bon format) des données
+- Le traitement des données récupérées afin d'en sortir de nouvelles
+- Renvoi des données à l'application web sous format utilisable
+
+La partie web devra comprendre :
+- Une partie sécurité (pour pas traffiquer le site)
+- Menu comprenant les cryptomonnaies prises en compte
+- Affichage temps réel (graphique) des courbes dfes cryptomonnaies
+- Fermeture des sessions
+- Design épuré et facile d'utilisation
+- Une partie admin pour gérer le site facilement
+
+####################################################################################################################
+
+POUR TOUTE AUTRE IDEE AJOUTEZ LES EN DESSOUS SOUS LE FORMAT : "Première lettre du prénom (E,F ou T) - date - nom idée : idée"
+Pour avoir un historique des idées que nous avons eu.
+exemple : T - 03/01/2021 - session admin : création de session admin pour faciliter la gestion du site
+
+IDEES :
+
