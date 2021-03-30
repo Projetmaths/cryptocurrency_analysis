@@ -227,6 +227,11 @@ def page_not_found(e):
     return render_template('404.html'), 404
 
 if __name__ == '__main__':
-    scheduler.add_job(id = 'Scheduled task', func = chart, trigger = 'interval', seconds = 60 )
+    try:
+        seconds = int(input("Set updating time of data chart in seconds: "))
+    except ValueError:
+        print("The value is not an integer ")
+        sys.exit(1)
+    scheduler.add_job(id = 'update of data charts', func = chart, trigger = 'interval', seconds = seconds )
     scheduler.start()
     app.run(debug=True, host='localhost')
