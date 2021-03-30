@@ -1,6 +1,6 @@
 # :moneybag: cryptocurrency_analysis_for_dummies
 
-Analyse graphique des cryptomonnaies
+## :chart: Analyse graphique des cryptomonnaies
 
 ## :gear: Mise en route
 
@@ -21,7 +21,7 @@ Installation des dépendances python via le fichier <strong>"requirements.txt"</
 py -m pip install -r requirements.txt
 ```
 
-### Installer
+### :construction_worker: Installer
 
 Une série d'exemples étape par étape qui vous explique comment faire fonctionner un environnement de développement.
 
@@ -51,7 +51,7 @@ Expliquer ce que ces tests testent et pourquoi
 Donnez un exemple
 ```
 
-### Déploiement
+### :money_with_wings: Déploiement
 
 Ajoutez des notes supplémentaires sur la façon de déployer ce programme sur un système opérationnel.
 
@@ -62,18 +62,18 @@ Ajoutez des notes supplémentaires sur la façon de déployer ce programme sur u
 * [Chart.js](https://www.chartjs.org/) - Créations des graphiques pour les cryptomonnaies.
 
 
-## Versionnage
+## :memo: Versionnage
 
-Nous utilisons [Git](https://git-scm.com/) pour le versioning. Pour les versions disponibles, voir les [commit sur ce dépôt](https://github.com). 
+Nous utilisons [Git](https://git-scm.com/) pour le versioning. Pour les versions disponibles, voir les [commit sur ce dépôt](https://github.com/Projetmaths/cryptocurrency_analysis_for_dummies/releases/tag/v1.0). 
 
 ## :beers: Auteurs
 
 **Enrich** **Florian** **Thibault**
 
-[cryptocurrency_analysis_for_dummies](https://github.com/)
+[cryptocurrency_analysis_for_dummies](https://github.com/Projetmaths/cryptocurrency_analysis_for_dummies)
 
 
-## Remerciements
+## :clap: Remerciements
 
 * 
 * 
