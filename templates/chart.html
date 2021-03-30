@@ -1,0 +1,334 @@
+{% extends "base.html" %}
+{% block title %} Cryptotrading {% endblock %}
+
+{% block script %}
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js" integrity="sha384-q2kxQ16AaE6UbzuKqyBE9/u/KzioAlnx2maXQHiDX9d4/zp8Ok3f+M7DPm+Ib6IU" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-pQQkAEnwaBkjpqZ8RU1fF1AKtTcHJwFl3pblpTlHXybJjHpMYo79HY3hIi4NKxyj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+{% endblock %}
+
+{% block link %}
+<link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/index.css') }}">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
+<link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+{% endblock %}
+
+{% block content %}
+<div class="content">
+	<div class="sidebar">
+		<div class="menu">
+			<div class="menu-first">
+				<div class="menu-title"><i class="fab fa-btc"></i> Cryptocurrency analysis</div>
+				<div class="menu-subtitle"><i class="fas fa-tachometer-alt"></i> <a href="/">Dashboard</a></div>
+			</div>
+			<div class="menu-second">
+				<div class="menu-title">Analysis</div>
+				<div class="menu-subtitle"><i class="fas fa-chart-line"></i> <a href="/chart">Charts</a></div>
+				<div class="menu-subtitle"><i class="fas fa-table"></i> Tables</div>
+			</div>
+		</div>
+	</div>
+	<div class="dashboard">
+		<div class="dash-title">Charts<br><a href="{{ url_for('chart') }}"><button type="button" class="refreshbutton"></buttontype>Actualiser</button></a></div>
+		<div class="dash-datatable">
+			<div class="dash-datatable-title"><i class="fas fa-table"></i> DataTable example</div>
+			<div class="dash-datatable-container">
+
+				<div style="width: 75%">
+					<h2 titre="1">Bitcoin</h2>
+					<div graph="1" class="dropdown">
+						<canvas id="myChart1"></canvas>
+					</div>
+				</div>
+				<br>
+
+				<div style="width: 75%">
+					<h2 titre="2">Ethereum</h2>
+					<div graph="2" class="dropdown">
+						<canvas id="myChart2"></canvas>
+					</div>
+				</div>
+				<br>
+
+				<div style="width: 75%">
+					<h2 titre="3">Binance Coin</h2>
+					<div graph="3" class="dropdown">
+						<canvas id="myChart3"></canvas>
+					</div>
+				</div>
+				<br>
+
+				<div style="width: 75%">
+					<h2 titre="4">Tether</h2>
+					<div graph="4" class="dropdown">
+						<canvas id="myChart4"></canvas>
+					</div>
+				</div>
+				<br>
+
+				<div style="width: 75%">
+					<h2 titre="5">Cardano</h2>
+					<div graph="5" class="dropdown">
+						<canvas id="myChart5"></canvas>
+					</div>
+				</div>
+
+				<script>
+
+					var prix_btc_js = {{prix_btc|tojson}};
+					var date_btc_js = {{date_btc|tojson}};
+
+					var prix_ada_js = {{prix_ada|tojson}};
+					var date_ada_js = {{date_ada|tojson}};
+
+					var prix_bch_js = {{prix_bch|tojson}};
+					var date_bch_js = {{date_bch|tojson}};
+
+					var prix_bnb_js = {{prix_bnb|tojson}};
+					var date_bnb_js = {{date_bnb|tojson}};
+
+					var prix_doge_js = {{prix_doge|tojson}};
+					var date_doge_js = {{date_doge|tojson}};
+
+					var prix_eth_js = {{prix_eth|tojson}};
+					var date_eth_js = {{date_eth|tojson}};
+
+					var prix_link_js = {{prix_link|tojson}};
+					var date_link_js = {{date_link|tojson}};
+
+					var prix_ltc_js = {{prix_ltc|tojson}};
+					var date_ltc_js = {{date_ltc|tojson}};
+
+					var prix_luna_js = {{prix_luna|tojson}};
+					var date_luna_js = {{date_luna|tojson}};
+
+					var prix_dot_js = {{prix_dot|tojson}};
+					var date_dot_js = {{date_dot|tojson}};
+
+					var prix_klay_js = {{prix_klay|tojson}};
+					var date_klay_js = {{date_klay|tojson}};
+
+					var prix_theta_js = {{prix_theta|tojson}};
+					var date_theta_js = {{date_theta|tojson}};
+
+					var prix_uni_js = {{prix_uni|tojson}};
+					var date_uni_js = {{date_uni|tojson}};
+
+					var prix_usdc_js = {{prix_usdc|tojson}};
+					var date_usdc_js = {{date_usdc|tojson}};
+
+					var prix_usdt_js = {{prix_usdt|tojson}};
+					var date_usdt_js = {{date_usdt|tojson}};
+
+					var prix_wbtc_js = {{prix_wbtc|tojson}};
+					var date_wbtc_js = {{date_wbtc|tojson}};
+
+					var prix_xlm_js = {{prix_xlm|tojson}};
+					var date_xlm_js = {{date_xlm|tojson}};
+
+					var prix_xrp_js = {{prix_xrp|tojson}};
+					var date_xrp_js = {{date_xrp|tojson}};
+
+					var prix_fil_js = {{prix_fil|tojson}};
+					var date_fil_js = {{date_fil|tojson}};
+
+					var labels = {{labels|tojson}};
+					var prices = {{data|tojson}};
+					var nb_csv = {{lim}};
+					var rows = {{count}};
+					var names = {{name|tojson}};
+					var symbols = {{symbol|tojson}};
+					var nb_lignes = nb_csv*rows;
+					var nom_tmp = '';
+				
+					console.log("==================================================")
+					console.log("Paramètres")
+					// console.log(rows);
+					// console.log(nb_csv);
+					// console.log(labels);
+					// console.log(prices);
+					console.log("==================================================")
+				
+					
+					for (var i = 0; i < (nb_lignes); i++) { //nb_csv*rows donnera le nombre total de lignes présentes à travers tous
+
+						if(i%rows==0){
+							console.log("changement"); //Ici on peut séparer les données avec de l'html jsp mais les données dans
+													   //le console.log sont bien séparées au modulo du nombre de lignes du csv.
+													   //Et vu qu'ils se remplissent à la même vitesse les séparations seront
+													   //toujours bien réparties.
+							//console.log('---'+names[i],prices[i],i+'---');
+							
+						}
+						
+					}
+						var ctx = document.getElementById('myChart1').getContext('2d');
+						var data = {
+								labels: [
+										{% for label in date_btc %}	
+											"{{label}}",
+										{% endfor %}
+								],
+								datasets: [{
+									data: [
+										  {% for p in prix_btc %}
+											  "{{p}}",
+										  {% endfor %}
+									],
+
+									fill:false,
+
+									pointStyle:"rectRot",
+
+									borderColor:"#32CD32",
+
+									label:'Prix en €',
+								}]
+							};
+						var config = {
+							type: 'line',
+							data: data,
+						};
+				
+						var chart = new Chart(ctx, config);
+						
+						var ctx = document.getElementById('myChart2').getContext('2d');
+						var data = {
+								labels: [
+										{% for label in date_eth %}	
+											"{{label}}",
+										{% endfor %}
+								],
+								datasets: [{
+									data: [
+										  {% for p in prix_eth %}
+											  "{{p}}",
+										  {% endfor %}
+									],
+
+									fill:false,
+
+									pointStyle:"rectRot",
+
+									borderColor:"#32CD32",
+
+									label: [
+										'Prix en €',
+										
+									]
+								}]
+							};
+						var config = {
+							type: 'line',
+							data: data,
+						};
+				
+						var chart = new Chart(ctx, config);
+
+						var ctx = document.getElementById('myChart3').getContext('2d');
+						var data = {
+								labels: [
+										{% for label in date_bnb %}	
+											"{{label}}",
+										{% endfor %}
+								],
+								datasets: [{
+									data: [
+										  {% for p in prix_bnb %}
+											  "{{p}}",
+										  {% endfor %}
+									],
+									fill:false,
+
+									pointStyle:"rectRot",
+
+									borderColor:"#32CD32",
+
+									label: [
+										'Prix en €',
+										
+									]
+								}]
+							};
+						var config = {
+							type: 'line',
+							data: data,
+						};
+
+						var chart = new Chart(ctx, config);
+
+						var ctx = document.getElementById('myChart4').getContext('2d');
+						var data = {
+								labels: [
+										{% for label in date_usdt %}	
+											"{{label}}",
+										{% endfor %}
+								],
+								datasets: [{
+									data: [
+										  {% for p in prix_usdt %}
+											  "{{p}}",
+										  {% endfor %}
+									],
+									fill:false,
+
+									pointStyle:"rectRot",
+
+									borderColor:"#32CD32",
+
+									label: [
+										'Prix en €',
+										
+									]
+								}]
+							};
+						var config = {
+							type: 'line',
+							data: data,
+						};
+
+						var chart = new Chart(ctx, config);
+
+						var ctx = document.getElementById('myChart5').getContext('2d');
+						var data = {
+								labels: [
+										{% for label in date_ada %}	
+											"{{label}}",
+										{% endfor %}
+								],
+								datasets: [{
+									data: [
+										  {% for p in prix_ada %}
+											  "{{p}}",
+										  {% endfor %}
+									],
+									fill:false,
+
+									pointStyle:"rectRot",
+
+									borderColor:"#32CD32",
+
+									label: [
+										'Prix en €',
+										
+									]
+								}]
+							};
+						var config = {
+							type: 'line',
+							data: data,
+						};
+
+						var chart = new Chart(ctx, config);
+				
+					$("[titre]").click(function(){
+						var affiche = $(this).attr("titre");
+						$("[graph='" +affiche+"']").toggle();
+					})
+				</script>
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %}
