@@ -1,16 +1,26 @@
-# :moneybag: cryptocurrency_analysis_for_dummies
+# :moneybag: cryptocurrency_analysis
 
-Analyse graphique des cryptomonnaies
+## :chart: Analyse graphique des cryptomonnaies
 
 ## :gear: Mise en route
 
-Ces instructions vous permettront de mettre en place une copie du projet sur votre machine locale à des fins de développement et de test. Voir déploiement pour des notes sur la façon de déployer le projet sur un système réel.
+Ces instructions vous permettront de mettre en place une copie du projet sur votre machine locale à des fins de développement et de test.
 
 ### :book: Prérequis
 
 Les éléments dont vous avez besoin pour installer l'application sur l'environnement Windows
 
-#### Création d'un compte sur https://procoinmarketcap.com/signup/ 
+
+#### Télécharger [Python3](https://www.python.org/downloads/)
+---
+
+#### Cloner le projet en local
+Pour récupérer le projet, il faut effectuer la commande suivante:
+```
+ git clone https://github.com/Projetmaths/cryptocurrency_analysis.git
+```
+
+#### Création d'un compte sur [procoinmarketcap](https://pro.coinmarketcap.com/signup/)
 
 Puis définissez API_KEY dans la variable système et redémarrez le PC
 ```
@@ -21,39 +31,15 @@ Installation des dépendances python via le fichier <strong>"requirements.txt"</
 py -m pip install -r requirements.txt
 ```
 
-### Installer
 
-Une série d'exemples étape par étape qui vous explique comment faire fonctionner un environnement de développement.
-
-Dites ce que sera l'étape
+## :pray: Exécuter le programme
 
 ```
-Donnez l'exemple
+python ./Projet.py
 ```
+Il faut se rendre sur l'url suivante : http://localhost:5000
+![Chart](img\chart.png "Chart Bitcoin")
 
-Et répétez
-
-```
-jusqu'à ce que vous ayez terminé
-```
-
-Terminez avec un exemple d'extraction de données du système ou d'utilisation pour une petite démonstration.
-
-## :pray: Exécuter les tests
-
-Expliquez comment exécuter les tests automatisés pour ce système.
-
-### Décomposer les tests de bout en bout
-
-Expliquer ce que ces tests testent et pourquoi
-
-```
-Donnez un exemple
-```
-
-### Déploiement
-
-Ajoutez des notes supplémentaires sur la façon de déployer ce programme sur un système opérationnel.
 
 ## :muscle: Construit avec
 
@@ -62,20 +48,19 @@ Ajoutez des notes supplémentaires sur la façon de déployer ce programme sur u
 * [Chart.js](https://www.chartjs.org/) - Créations des graphiques pour les cryptomonnaies.
 
 
-## Versionnage
+## :memo: Versionnage
 
-Nous utilisons [Git](https://git-scm.com/) pour le versioning. Pour les versions disponibles, voir les [commit sur ce dépôt](https://github.com). 
+Nous utilisons [Git](https://git-scm.com/) pour le versionnage Pour les versions disponibles, voir les [commit sur ce dépôt](https://github.com/Projetmaths/cryptocurrency_analysis/releases/tag/v1.0). 
 
 ## :beers: Auteurs
 
 **Enrich** **Florian** **Thibault**
 
-[cryptocurrency_analysis_for_dummies](https://github.com/)
+[cryptocurrency_analysis](https://github.com/Projetmaths/cryptocurrency_analysis)
 
 
-## Remerciements
+## :clap: Remerciements
 
-* 
-* 
-* 
+* Professeur de mathématiques Mr CANTELAUBE Luc pour nous avoir guidé sur la gestion de notre projet et à avoir fait force de proposition concerant les outils à utiliser.
+
 

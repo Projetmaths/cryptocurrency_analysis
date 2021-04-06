@@ -10,7 +10,7 @@ import sys
 
 # FLASK Application
 app = Flask(__name__)
-scheduler = BackgroundScheduler()
+scheduler = BackgroundScheduler(daemon=True)
 
 # API KEY
 api_key = os.getenv("API_KEY")
@@ -136,8 +136,6 @@ def chart():
                 name.append(val1) #insérer nom
                 symbol.append(val4) #insérer acronyme
                 
-                print(tab[0])
-                print(tab)
                 
                 if tab[0] == "['Bitcoin":
                     prix_btc.append(val2)
