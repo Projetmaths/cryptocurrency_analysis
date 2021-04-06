@@ -10,7 +10,7 @@ import sys
 
 # FLASK Application
 app = Flask(__name__)
-scheduler = BackgroundScheduler()
+scheduler = BackgroundScheduler(daemon=True)
 
 # API KEY
 api_key = os.getenv("API_KEY")
