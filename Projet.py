@@ -25,7 +25,7 @@ def index():
     
 @app.route('/chart')
 def chart():
-    lim=5
+    lim=3
     url = 'https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest'
     parameters = {'start': '1', 'limit': lim, 'convert': 'EUR'}
     headers = {'Accepts': 'application/json','X-CMC_PRO_API_KEY': api_key }
@@ -38,12 +38,13 @@ def chart():
     except (ConnectionError, Timeout, TooManyRedirects) as e:
         print(e)
         
-    for i in range(0, lim):
+    for i in range(0, lim): #lim = 3
         nomcrypto=str("csv/"+donnees[i]['symbol']+".csv")
         with open(nomcrypto, "a") as csvfile:
             row = str(donnees[i]['name'])+';'+str(donnees[i]['quote']['EUR']['price'])+';'+str(donnees[i]['last_updated'])+';'+str(donnees[i]['symbol'])+ '\n'
             csvfile.write(row)
         csvfile.close()
+
     labels = []
     data = []
     
@@ -218,7 +219,6 @@ def chart():
               
     return render_template('chart.html', labels = labels, data = data,  lim=lim, count=count, name=name, symbol=symbol, prix_btc = prix_btc, date_btc = date_btc, prix_ada = prix_ada, date_ada = date_ada , prix_bch = prix_bch, date_bch = date_bch, prix_bnb = prix_bnb, date_bnb = date_bnb, prix_doge = prix_doge, date_doge = date_doge,prix_dot = prix_dot, date_dot = date_dot,prix_eth = prix_eth, date_eth = date_eth,prix_link = prix_link, date_link = date_link,prix_ltc = prix_ltc, date_ltc = date_ltc,prix_luna = prix_luna, date_luna = date_luna ,prix_klay = prix_klay,date_klay = date_klay,prix_theta = prix_theta,date_theta = date_theta,prix_uni = prix_uni,date_uni = date_uni,prix_usdc = prix_usdc,date_usdc = date_usdc,prix_usdt = prix_usdt,date_usdt = date_usdt,prix_wbtc = prix_wbtc,date_wbtc = date_wbtc,prix_xlm = prix_xlm,date_xlm = date_xlm,prix_xrp = prix_xrp,date_xrp = date_xrp, prix_fil = prix_fil, date_fil = date_fil) 
 
-    
 
 @app.errorhandler(404)
 def page_not_found(e):
