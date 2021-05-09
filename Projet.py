@@ -37,7 +37,7 @@ def chart():
         donnees = data['data']
     except (ConnectionError, Timeout, TooManyRedirects) as e:
         print(e)
-        
+    
     for i in range(0, lim): #lim = 3
         nomcrypto=str("csv/"+donnees[i]['symbol']+".csv")
         with open(nomcrypto, "a") as csvfile:
