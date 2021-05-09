@@ -38,7 +38,7 @@ py -m pip install -r requirements.txt
 python ./Projet.py
 ```
 Il faut se rendre sur l'url suivante : http://localhost:5000
-![Chart](img\chart.png "Chart Bitcoin")
+![Chart](https://github.com/Projetmaths/cryptocurrency_analysis/blob/master/img/chart.png "Chart Bitcoin")
 
 
 ## :muscle: Construit avec
